@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tinh Nam Nhuan</title>
+</head>
+<body>
+    <script>
+        // kiem tra dinh dang ngay thang MM/yyyy
+        function isValidDate(date){
+            let dateArr = date.split('/')
+            if(dateArr.length !== 2){
+                return false
+            }
+            month = parseInt(dateArr[0])
+            year = parseInt(dateArr[1])
+            return month > 0 && month <= 12 && year >= 1000 && year <= 9999
+        }
+
+        // lay ra so ngay trong thang do, co kiem tra nam nhuan
+        function getDays(mon,yea) {
+            if (mon === 2){
+                return (yea % 4 === 0 && yea % 100 !== 0) || (yea % 400 === 0) ? '29' : '28'
+            }
+            else{
+                switch(mon){
+                    case 1:
+                    case 3:
+                    case 5:
+                    case 7:
+                    case 8:
+                    case 10:
+                    case 12:
+                        return '31'
+                        break
+                    default:
+                        return '30'
+                        br
+                }
+            }
+        }
+
+        // nhap ngay thang
+        let inputDate = prompt("Nhập vào ngày tháng với định dạng MM/yyyy:");
+        let month
+        let year
+
+        // kiem tra dinh dang va hien thi thong bao
+        if (isValidDate(inputDate)) {
+            let day = getDays(month,year)
+            alert(`thang ${month} co ${day} ngay`)
+        } else {
+            alert("Ngày tháng không hợp lệ. Vui lòng nhập lại theo định dạng MM/yyyy.");
+        }
+
+    </script>
+</body>
+</html>

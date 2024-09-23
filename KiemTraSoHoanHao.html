@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiem tra so hoan hao</title>
+</head>
+<body> 
+    <script>
+        
+        // ham kiem tra so hoan hao
+        function isPerfectNumber(num) {
+            let sum = 0;
+            for (let i = 1; i <= num / 2; i++) {
+                if (num % i === 0) {
+                    sum += i;
+                }
+            }
+
+            if (num !== 0 && sum === num){
+                return true
+            }
+            else{
+                return false
+            }
+        }
+        
+        //khoi tao bien
+        let number;
+
+        //Nhap so
+        do{
+            number = parseInt(prompt("Nhập vào một số:"));
+        }while(isNaN(number))
+
+        // kiem tra va hien thi ket qua tu so nhap vao
+        if (isPerfectNumber(number)){
+            alert(number + " là số hoàn hảo.");
+        }
+        else{
+            alert(number + " không phải là số hoàn hảo.");
+        }
+
+    </script>
+</body>
+</html>

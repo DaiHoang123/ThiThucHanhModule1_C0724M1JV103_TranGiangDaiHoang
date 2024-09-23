@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính trung bình cộng</title>
+</head>
+<body>
+    
+    <div id="mangdanhap"></div>
+    <div id="sochiahetcho3"></div>
+
+    <script>
+        let arr = []
+        let sum = 0
+        let count = 0
+
+        //khoi tao mang co 50 phan tu
+        for (let i = 1 ; i <= 50 ; i++)
+        {
+            arr.push(i)
+        }
+
+        //nhap so de them vao mang
+        let input = prompt("Nhap so: ")
+
+        //kiem tra so luong phan tu trong mang, neu it hon 50 thi them input, khong thi bo qua
+        if(arr.length<50)
+        {
+            arr.push(input)
+        }
+        else{
+            alert("mang da du 50 so")
+        }
+
+        //loc ra cac so chia het cho 3
+        let arrDiv3 = arr.filter(item => item%3==0)
+
+        //duyet tung phan tu, neu so chia het cho 3 thi cong vao bien sum, bien count tang 1
+        let result = arrDiv3.forEach(item => {
+            sum += item
+            count++
+        });
+
+        //hien thi mang da nhap
+        document.getElementById("mangdanhap").innerText = `mang da nhap: ${arr}`;
+
+        //hien thi so trung binh cong cua cac so chia het cho 3
+        document.getElementById("sochiahetcho3").innerText = `trung binh cong cac so chia het cho 3:  ${sum/count}`;
+    </script>
+</body>
+</html>
