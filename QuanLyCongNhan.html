@@ -40,9 +40,12 @@
             <button class="btn btn-danger" onclick="xoaCongNhan()">Xoa</button>
         </div>
 
+        <br>
+        <h3>Danh Sách Công Nhân</h3>
+        <br>
         <table border="1">
             <thead>
-                <tr>
+                <tr style="text-align: center;">
                     <th>STT</th>
                     <th>Họ và Tên</th>
                     <th>Năm Sinh</th>
@@ -56,6 +59,8 @@
     </div>
 
     <script>
+
+        // khoi tao class congNhan
         class congNhan {
             constructor(stt, hoten, ngaysinh, diachi, luong, chucvu) {
                 this.stt = stt
@@ -67,12 +72,14 @@
             }
         }
 
+        // hien thi danh sach cong nhan
         function hienThiCongNhan() {
+            // sap xep mang truoc khi hien thi
             arr.sort((a, b) => {
-                if (a.name < b.name) {
+                if (a.hoten < b.hoten) {
                     return -1;
                 }
-                if (a.name > b.name) {
+                if (a.hoten > b.hoten) {
                     return 1;
                 }
                 return 0;
@@ -80,15 +87,16 @@
 
             let result = ''
 
+            // tao code html de hien thi danh sach
             arr.forEach(item => {
                 result += `
                             <tr>
-                                <td>${item.stt}</td>
-                                <td>${item.hoten}</td>
-                                <td>${item.ngaysinh}</td>
-                                <td>${item.diachi}</td>
-                                <td>${item.luong}</td>
-                                <td>${item.chucvu}</td>
+                                <td style="width:200px;height:50px">${item.stt}</td>
+                                <td style="width:200px;height:50px">${item.hoten}</td>
+                                <td style="width:200px;height:50px">${item.ngaysinh}</td>
+                                <td style="width:200px;height:50px">${item.diachi}</td>
+                                <td style="width:200px;height:50px">${item.luong}</td>
+                                <td style="width:200px;height:50px">${item.chucvu}</td>
                             </tr>
                         `
                 console.log(result)
@@ -96,6 +104,7 @@
             document.getElementById('hienthicongnhan').innerHTML = result
         }
 
+        // lay thong tin cong nhan tu input, kiem tra va them vao mang
         function getCongNhan() {
             let stt = document.getElementById('stt').value
             let hoten = document.getElementById('hoten').value
@@ -111,9 +120,16 @@
             hienThiCongNhan()
         }
 
+        // xoa toan bo danh sach cong nhan
         function xoaCongNhan() {
             arr = []
             hienThiCongNhan()
+            document.getElementById('stt').value = ''
+            document.getElementById('hoten').value = ''
+            document.getElementById('namsinh').value = ''
+            document.getElementById('diachi').value = ''
+            document.getElementById('luong').value = ''
+            document.getElementById('chucvu').value = ''
         }
 
         let arr = []
